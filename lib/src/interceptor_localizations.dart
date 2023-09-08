@@ -1,10 +1,7 @@
-
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class InterceptorLocalizations {
-
   final Locale locale;
 
   InterceptorLocalizations(this.locale);
@@ -22,24 +19,27 @@ class InterceptorLocalizations {
     return values["en"];
   }
 
-  static const InterceptorLocalizationsDelegate delegate = InterceptorLocalizationsDelegate();
+  static const InterceptorLocalizationsDelegate delegate =
+      InterceptorLocalizationsDelegate();
 
   //为了使用方便，我们定义一个静态方法
   static InterceptorLocalizations? of(BuildContext context) {
-    return Localizations.of<InterceptorLocalizations>(context, InterceptorLocalizations);
+    return Localizations.of<InterceptorLocalizations>(
+        context, InterceptorLocalizations);
   }
 
   static InterceptorString getInterceptorString(BuildContext context) {
-    return Localizations.of<InterceptorLocalizations>(context, InterceptorLocalizations)?.currentLocalization??EnInterceptorString();
+    return Localizations.of<InterceptorLocalizations>(
+                context, InterceptorLocalizations)
+            ?.currentLocalization ??
+        EnInterceptorString();
   }
-
-
 }
 
-
-class InterceptorLocalizationsDelegate extends LocalizationsDelegate<InterceptorLocalizations> {
-
+class InterceptorLocalizationsDelegate
+    extends LocalizationsDelegate<InterceptorLocalizations> {
   const InterceptorLocalizationsDelegate();
+
   ///是否支持某个Local
   @override
   bool isSupported(Locale locale) {
@@ -49,24 +49,20 @@ class InterceptorLocalizationsDelegate extends LocalizationsDelegate<Interceptor
       'ja',
     ].contains(locale.languageCode);
   }
+
   @override
   Future<InterceptorLocalizations> load(Locale locale) {
     return SynchronousFuture<InterceptorLocalizations>(
         InterceptorLocalizations(locale));
   }
 
-
   @override
-  bool shouldReload(covariant LocalizationsDelegate<InterceptorLocalizations> old) => false;
-
+  bool shouldReload(
+          covariant LocalizationsDelegate<InterceptorLocalizations> old) =>
+      false;
 }
 
-
-
 abstract class InterceptorString {
-
-
-
   String? simpleInterception;
 
   String? summary;
@@ -78,12 +74,10 @@ abstract class InterceptorString {
   String? requestTime;
   String? responseTime;
   String? duration;
-
 }
 
 /// Simplified Chinese
 class ChInterceptorString implements InterceptorString {
-
   @override
   String? copy = "复制请求";
 
@@ -110,8 +104,6 @@ class ChInterceptorString implements InterceptorString {
 
   @override
   String? summary = "概述";
-
-
 }
 
 // /// Traditional Chinese
@@ -129,7 +121,6 @@ class ChInterceptorString implements InterceptorString {
 
 /// English
 class EnInterceptorString implements InterceptorString {
-
   @override
   String? copy = "copy";
 
@@ -156,13 +147,10 @@ class EnInterceptorString implements InterceptorString {
 
   @override
   String? summary = "summary";
-
-
 }
 
 /// Japanese
 class JpInterceptorString implements InterceptorString {
-
   @override
   String? copy = "要求のコピー";
 
@@ -189,5 +177,4 @@ class JpInterceptorString implements InterceptorString {
 
   @override
   String? summary = "概要";
-
 }

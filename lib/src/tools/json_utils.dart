@@ -1,12 +1,11 @@
-
 import 'dart:convert';
 
 String json(String? json) {
-  if (json==null||json.isEmpty) {
+  if (json == null || json.isEmpty) {
     return "";
-  }else{
+  } else {
     var j = json.trim();
-    try{
+    try {
       if (j.startsWith("{")) {
         Map<String, dynamic> decode = JsonCodec().decode(json);
         var encoder = JsonEncoder.withIndent('  ');
@@ -17,7 +16,7 @@ String json(String? json) {
         var encoder = JsonEncoder.withIndent('  ');
         return encoder.convert(decode);
       }
-    }on Exception catch (e) {
+    } on Exception {
       return json;
     }
     return json;

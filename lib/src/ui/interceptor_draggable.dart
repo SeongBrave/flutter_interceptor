@@ -1,15 +1,13 @@
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'simple_interceptor.dart';
 
-class InterceptorDraggable extends StatefulWidget{
+class InterceptorDraggable extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() =>_InterceptorDraggableState();
+  State<StatefulWidget> createState() => _InterceptorDraggableState();
 }
 
-class _InterceptorDraggableState extends State<InterceptorDraggable>{
+class _InterceptorDraggableState extends State<InterceptorDraggable> {
   double left = 100;
   double top = 100;
   double btnSize = 50;
@@ -20,6 +18,7 @@ class _InterceptorDraggableState extends State<InterceptorDraggable>{
   Widget build(BuildContext context) {
     screenHeight = MediaQuery.of(context).size.height;
     screenWidth = MediaQuery.of(context).size.width;
+
     ///计算偏移量限制
     if (left < 1) {
       left = 1;
@@ -35,7 +34,7 @@ class _InterceptorDraggableState extends State<InterceptorDraggable>{
       top = screenHeight - btnSize;
     }
     return GestureDetector(
-      onTap: (){
+      onTap: () {
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) => SimpleInterceptor(),
@@ -43,7 +42,7 @@ class _InterceptorDraggableState extends State<InterceptorDraggable>{
         );
       },
       onPanUpdate: _dragUpdate,
-      child:Container(
+      child: Container(
         alignment: Alignment.topLeft,
         margin: EdgeInsets.only(left: left, top: top),
         child: SizedBox(
@@ -54,9 +53,7 @@ class _InterceptorDraggableState extends State<InterceptorDraggable>{
             child: Text(
               "Http",
               textAlign: TextAlign.center,
-              style: TextStyle(
-                  color: Colors.white
-              ),
+              style: TextStyle(color: Colors.white),
             ),
           ),
         ),
@@ -68,8 +65,6 @@ class _InterceptorDraggableState extends State<InterceptorDraggable>{
     Offset offset = detail.delta;
     left = left + offset.dx;
     top = top + offset.dy;
-    setState(() {
-
-    });
+    setState(() {});
   }
 }

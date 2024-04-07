@@ -26,22 +26,20 @@ class _InterceptorDetailState extends State<InterceptorDetail> {
               "${widget.httpTransaction.method} ${widget.httpTransaction.path}"),
           elevation: 0,
           bottom: TabBar(
-            unselectedLabelColor: Colors.black38,
-            indicatorColor: Colors.white,
             indicatorSize: TabBarIndicatorSize.label,
             indicatorWeight: 3.0,
             tabs: <Widget>[
               Text(
                 local.summary!,
-                style: TextStyle(fontSize: 15, color: Colors.white),
+                style: TextStyle(fontSize: 15),
               ),
               Text(
                 local.request!,
-                style: TextStyle(fontSize: 15, color: Colors.white),
+                style: TextStyle(fontSize: 15),
               ),
               Text(
                 local.response!,
-                style: TextStyle(fontSize: 15, color: Colors.white),
+                style: TextStyle(fontSize: 15),
               ),
             ],
           ),
